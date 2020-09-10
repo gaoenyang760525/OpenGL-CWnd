@@ -35,6 +35,7 @@ BEGIN_MESSAGE_MAP(YM3DLibGL, CWnd)
 	ON_WM_MBUTTONUP()
 	ON_WM_MBUTTONDOWN()
 	ON_WM_MOUSEWHEEL()
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 
@@ -335,7 +336,7 @@ int YM3DLibGL::DrawXXX()
 	_cprintf("DrawXXX");
 
 
-
+	/*
 	//绘制操作：
 	glColor3f(0.0f, 1.0f, 255.0f);
 	glBegin(GL_TRIANGLES); // Drawing Using Triangles
@@ -343,6 +344,7 @@ int YM3DLibGL::DrawXXX()
 	glVertex3f(-100.0f, 0.0f, 100.0f);     // Bottom Left
 	glVertex3f(100.0f, 100.0f, 100.0f);     // Bottom Right
 	glEnd();           // Finished Drawing The Triangle
+	*/
 
 	return 1;
 }
@@ -450,4 +452,15 @@ BOOL YM3DLibGL::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
 
 
 	return CWnd::OnMouseWheel(nFlags, zDelta, pt);
+}
+
+
+
+//为了防止在MFC下，用OPENGL闪烁。
+BOOL YM3DLibGL::OnEraseBkgnd(CDC* pDC)
+{
+	// TODO:  在此添加消息处理程序代码和/或调用默认值
+
+	//return CWnd::OnEraseBkgnd(pDC);
+	return true;
 }
